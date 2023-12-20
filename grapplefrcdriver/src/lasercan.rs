@@ -140,7 +140,7 @@ pub extern "C" fn lasercan_new(can_id: u8) -> *mut LaserCanDevice {
 pub extern "C" fn lasercan_free(lc: *mut LaserCanDevice) {
   if lc.is_null() { return; }
   unsafe { drop(Box::from_raw(lc)) }
-}  
+}
 
 // Need to wrap this so MSVC doesn't complain about using C++ generics in extern "C"
 #[repr(C)]
