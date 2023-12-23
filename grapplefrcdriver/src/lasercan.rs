@@ -1,7 +1,6 @@
 use std::{
     ffi::c_int,
     ops::{Deref, DerefMut},
-    sync::{mpsc, Arc, RwLock},
     time::{Duration, Instant},
 };
 
@@ -200,7 +199,7 @@ pub extern "C" fn lasercan_free(lc: *mut LaserCanDevice) {
 
 // Need to wrap this so MSVC doesn't complain about using C++ generics in extern "C"
 #[repr(C)]
-pub struct MaybeStatusFrame(COptional<LaserCanStatusFrame>);
+pub struct MaybeStatusFrame(pub COptional<LaserCanStatusFrame>);
 
 #[no_mangle]
 pub extern "C" fn lasercan_get_status(inst: *mut LaserCanDevice) -> MaybeStatusFrame {

@@ -3,7 +3,7 @@ extern crate cbindgen;
 
 const SYMBOL_REGEX: &str = r"(HAL_)\w+";
 
-use cbindgen::{Builder, Config, Language};
+use cbindgen::{Builder, Config};
 use std::path::Path;
 use std::{env, path::PathBuf};
 
