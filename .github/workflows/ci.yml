@@ -168,7 +168,7 @@ jobs:
           java-version: 17
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.12.1'
           architecture: ${{ matrix.target }}
       - name: Install Clang
         run: sudo apt-get update && sudo apt-get install -y libclang1-15 clang llvm gcc-multilib
@@ -195,7 +195,7 @@ jobs:
           java-version: 17
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.12.1'
           architecture: ${{ matrix.target }}
       - name: Setup Rust
         uses: ATiltedTree/setup-rust@v1
