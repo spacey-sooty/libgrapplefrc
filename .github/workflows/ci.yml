@@ -157,9 +157,6 @@ jobs:
 
   linux-py:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target: [x86_64, x86, aarch64, armv7, s390x, ppc64le]
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -169,7 +166,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12.1'
-          architecture: ${{ matrix.target }}
+          architecture: x64
       - name: Install Clang
         run: sudo apt-get update && sudo apt-get install -y libclang1-15 clang llvm gcc-multilib
       - name: Prepare Rust Libs
@@ -177,7 +174,7 @@ jobs:
       - name: Build wheels
         uses: PyO3/maturin-action@v1
         with:
-          target: ${{ matrix.target }}
+          target: x64
           args: --release -m grpl-py/Cargo.toml
           sccache: 'true'
           manylinux: auto
