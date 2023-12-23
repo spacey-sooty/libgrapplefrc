@@ -168,7 +168,8 @@ jobs:
           python-version: '3.12.1'
           architecture: x64
       - name: Install Clang
-        run: sudo apt-get update && sudo apt-get install -y libclang1-15 clang llvm gcc-multilib
+        run: apt-get update && apt-get install -y libclang1-15 clang llvm gcc-multilib
+        run: apt-get update && apt-get install -y libclang1-15 clang llvm gcc-multilib
       - name: Prepare Rust Libs
         run: ./gradlew updateRustLibs --max-workers 1
       - name: Build wheels
@@ -180,7 +181,7 @@ jobs:
           manylinux: auto
 
   windows-py:
-    runs-on: windows-latest
+    runs-on: windows-2022
     strategy:
       matrix:
         target: [x64, x86]
